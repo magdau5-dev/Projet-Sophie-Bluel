@@ -51,13 +51,13 @@
 			<section id="portfolio">
 				<h2>Mes Projets</h2>
 				<div class="container-btn">
-					<button class="filters-btn">Tous</button>
-					<button class="filters-btn">Objets</button>
-					<button class="filters-btn">Appartements</button>
-					<button class="filters-btn">Hôtels & restaurants</button>
+					<button class="filters-btn active" onclick="getWorks()">Tous</button>
+					<button class="filters-btn" onclick="getWorksByCategory(1)">Objets</button>
+					<button class="filters-btn" onclick="getWorksByCategory(2)">Appartements</button>
+					<button class="filters-btn" onclick="getWorksByCategory(3)">Hôtels & restaurants</button>
 				</div>
 				<div id="gallery" class="gallery">
-					<!-- j'appels ma fontion -->
+					<!-- j'appels ma fonction -->
 				</div>
 			</section>
 			<section id="contact">

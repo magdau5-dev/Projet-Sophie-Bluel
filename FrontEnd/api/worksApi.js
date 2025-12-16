@@ -1,55 +1,55 @@
-// async function getWorks() {
-// 	try {
-// 		const response = await fetch("http://localhost:5678/api/works");
-
-// 		const works = await response.json();
-
-// 		const gallery = document.getElementById("gallery");
-
-// 		works.forEach((work) => {
-// 			const figure = document.createElement("figure");
-
-// 			const img = document.createElement("img");
-// 			img.src = work.imageUrl;
-// 			img.alt = work.title;
-
-// 			const figcaption = document.createElement("figcaption");
-// 			figcaption.textContent = work.title;
-
-// 			figure.appendChild(img);
-// 			figure.appendChild(figcaption);
-// 			gallery.appendChild(figure);
-//             console.log("Tableau de mes objets fetch :", works)
-// 		});
-// 	} catch (error) {
-// 		console.error("Erreur lors du chargement des works :", error);
-// 	}
-// }
-// getWorks();
-
-
-
 async function getWorks() {
-    try {
-        const response = await fetch("http://localhost:5678/api/works");
-        const works = await response.json();
-        
-        const gallery = document.getElementById("gallery");
+	try {
+		const response = await fetch("http://localhost:5678/api/works");
 
-        const html = works.map((work) =>
-            `<figure>
-                <img src="${work.imageUrl}" alt="${work.title}" />
-                <figcaption>${work.title}</figcaption>
-            </figure>`).join("");
+		const works = await response.json();
 
-        console.log("Tableau de mes objets .map :", works)
+		const gallery = document.getElementById("gallery");
 
-        gallery.innerHTML = html;
-    } catch (error) {
-        console.error("Erreur lors du chargement des works :", error);
-    }	
+		works.forEach((work) => {
+			const figure = document.createElement("figure");
+
+			const img = document.createElement("img");
+			img.src = work.imageUrl;
+			img.alt = work.title;
+
+			const figcaption = document.createElement("figcaption");
+			figcaption.textContent = work.title;
+
+			figure.appendChild(img);
+			figure.appendChild(figcaption);
+			gallery.appendChild(figure);
+            console.log("Tableau de mes objets fetch :", works)
+		});
+	} catch (error) {
+		console.error("Erreur lors du chargement des works :", error);
+	}
 }
 getWorks();
+
+
+
+// async function getWorks() {
+//     try {
+//         const response = await fetch("http://localhost:5678/api/works");
+//         const works = await response.json();
+        
+//         const gallery = document.getElementById("gallery");
+
+//         const html = works.map((work) =>
+//             `<figure>
+//                 <img src="${work.imageUrl}" alt="${work.title}" />
+//                 <figcaption>${work.title}</figcaption>
+//             </figure>`).join("");
+
+//         console.log("Tableau de mes objets .map :", works)
+
+//         gallery.innerHTML = html;
+//     } catch (error) {
+//         console.error("Erreur lors du chargement des works :", error);
+//     }	
+// }
+// getWorks();
 
 /*
 <figure>
@@ -60,3 +60,32 @@ getWorks();
 	<figcaption>Abajour Tahina</figcaption>
 </figure>
 */
+
+
+
+async function getWorksByCategory(categoryId) {
+    try {
+        const response = await fetch("http://localhost:5678/api/works");
+        const works = await response.json();
+
+        const filteredWorks = works.filter(
+            function (work) {
+                return work.category.id === categoryId
+            } 
+        );
+
+        const gallery = document.getElementById("gallery");
+
+        const html = filteredWorks.map(work =>
+            `<figure>
+                <img src="${work.imageUrl}" alt="${work.title}">
+                <figcaption>${work.title}</figcaption>
+            </figure>`
+        ).join("");
+
+        gallery.innerHTML = html;
+
+    } catch (error) {
+        console.error("Erreur lors du filtrage :", error);
+    }
+}
