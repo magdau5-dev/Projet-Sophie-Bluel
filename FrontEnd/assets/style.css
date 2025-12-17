@@ -313,3 +313,26 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em;
 }
+
+
+
+.error-message{
+	color: #B1663C;
+	text-align: center;
+	margin-top: 20px;
+	font-size: large;
+	display: none;
+}
+
+.btn-connexion {
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: large;
+	color: white;
+	padding: 15px;
+	background-color: #1d6154;
+	margin: 2em auto;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px;
+}

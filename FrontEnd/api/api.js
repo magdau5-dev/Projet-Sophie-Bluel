@@ -1,3 +1,5 @@
+// Tous les works
+// Méthode fetch
 async function getWorks() {
 	try {
 		const response = await fetch("http://localhost:5678/api/works");
@@ -27,8 +29,7 @@ async function getWorks() {
 }
 getWorks();
 
-
-
+// Méthode .map 
 // async function getWorks() {
 //     try {
 //         const response = await fetch("http://localhost:5678/api/works");
@@ -62,7 +63,7 @@ getWorks();
 */
 
 
-
+// Toutes les catégories depuis les works
 async function getWorksByCategory(categoryId) {
     try {
         const response = await fetch("http://localhost:5678/api/works");
@@ -88,4 +89,25 @@ async function getWorksByCategory(categoryId) {
     } catch (error) {
         console.error("Erreur lors du filtrage :", error);
     }
+}
+
+
+
+async function loginUser(email, password) {
+	const response = await fetch("http://localhost:5678/api/users/login", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			email: email,
+			password: password
+		})
+	});
+
+	if (!response.ok) {
+		throw new Error("Identifiants incorrects");
+	}
+
+	return await response.json(); // { token: "..." }
 }
