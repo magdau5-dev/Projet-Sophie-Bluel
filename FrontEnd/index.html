@@ -13,6 +13,12 @@
 		<link rel="stylesheet" href="./assets/style.css" />
 	</head>
 	<body>
+		<aside id="admin-logged">
+			<div id="logo-edition">
+				<i class="fa-regular fa-pen-to-square"></i>
+				<p class="modify-a">Mode édition</p>
+			</div>
+		</aside>
 		<header>
 			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 			<nav>
@@ -49,12 +55,22 @@
 				</article>
 			</section>
 			<section id="portfolio">
-				<h2>Mes Projets</h2>
+				<div class="flex-modify">
+					<h2>Mes Projets</h2>
+
+					<button class="btn-style"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+				</div>
 				<div class="container-btn">
 					<button class="filters-btn active" onclick="getWorks()">Tous</button>
-					<button class="filters-btn" onclick="getWorksByCategory(1)">Objets</button>
-					<button class="filters-btn" onclick="getWorksByCategory(2)">Appartements</button>
-					<button class="filters-btn" onclick="getWorksByCategory(3)">Hôtels & restaurants</button>
+					<button class="filters-btn" onclick="getWorksByCategory(1)">
+						Objets
+					</button>
+					<button class="filters-btn" onclick="getWorksByCategory(2)">
+						Appartements
+					</button>
+					<button class="filters-btn" onclick="getWorksByCategory(3)">
+						Hôtels & restaurants
+					</button>
 				</div>
 				<div id="gallery" class="gallery">
 					<!-- j'appels ma fonction -->
@@ -85,4 +101,7 @@
 	</body>
 	<script src="./api/api.js"></script>
 	<script src="./auth/auth.js"></script>
+	<script
+		src="https://kit.fontawesome.com/7184ab7233.js"
+		crossorigin="anonymous"></script>
 </html>

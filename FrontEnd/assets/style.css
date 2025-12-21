@@ -179,6 +179,26 @@ nav li {
 	font-size: 1.2em;
 }
 
+/* Bloc édition */
+
+#admin-logged{
+	width: 100%;
+	background-color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 0px;
+	height: 50px;
+}
+
+#logo-edition{
+	display: flex;
+	font-size: 16px;
+	color: #fff;
+	gap: 10px;
+}
+
+
 /* Effects Liens Redirectionnels */
 
 a {
@@ -189,6 +209,27 @@ a {
 a:hover {
 	color: #b1663c;
 }
+
+/* Btn modifier  */
+
+.flex-modify{
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	
+}
+
+.btn-style{
+	background: none;
+	border: none;
+	padding-bottom: 30px;
+	font-size: 14px;
+}
+.btn-style i{
+	padding-right: 10px;
+}
+
+
 
 
 #introduction {
@@ -238,12 +279,14 @@ a:hover {
 	background-color: #FFFEF8;
 	border-color: #1d6154;
 	min-width: 100px;
-}
-.filters-btn:hover {
-	color: #fff;
-	background-color: #1d6154;
 	cursor: pointer;
 }
+.filters-btn:focus {
+	color: #fff;
+	background-color: #1d6154;
+}
+
+
 
 .gallery {
 	width: 100%;
