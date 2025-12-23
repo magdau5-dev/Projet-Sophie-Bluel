@@ -13,8 +13,8 @@
 		<link rel="stylesheet" href="./assets/style.css" />
 	</head>
 	<body>
-		<aside id="admin-logged">
-			<div id="logo-edition">
+		<aside id="edition-section">
+			<div id="edition-content">
 				<i class="fa-regular fa-pen-to-square"></i>
 				<p class="modify-a">Mode édition</p>
 			</div>
@@ -58,9 +58,9 @@
 				<div class="flex-modify">
 					<h2>Mes Projets</h2>
 
-					<button class="btn-style"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+					<button  id="btn-modify" class="btn-style"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
 				</div>
-				<div class="container-btn">
+				<div id="filters" class="container-btn">
 					<button class="filters-btn active" onclick="getWorks()">Tous</button>
 					<button class="filters-btn" onclick="getWorksByCategory(1)">
 						Objets
