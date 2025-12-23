@@ -2,39 +2,39 @@
 // Méthode fetch
 async function getWorks() {
 	try {
-		const response = await fetch("http://localhost:5678/api/works");
+		const response = await fetch('http://localhost:5678/api/works');
 
 		const works = await response.json();
 
-		const gallery = document.getElementById("gallery");
+		const gallery = document.getElementById('gallery');
 
 		works.forEach((work) => {
-			const figure = document.createElement("figure");
+			const figure = document.createElement('figure');
 
-			const img = document.createElement("img");
+			const img = document.createElement('img');
 			img.src = work.imageUrl;
 			img.alt = work.title;
 
-			const figcaption = document.createElement("figcaption");
+			const figcaption = document.createElement('figcaption');
 			figcaption.textContent = work.title;
 
 			figure.appendChild(img);
 			figure.appendChild(figcaption);
 			gallery.appendChild(figure);
-            console.log("Tableau de mes objets fetch :", works)
+			console.log('Tableau de mes objets fetch :', works);
 		});
 	} catch (error) {
-		console.error("Erreur lors du chargement des works :", error);
+		console.error('Erreur lors du chargement des works :', error);
 	}
 }
 getWorks();
 
-// Méthode .map 
+// Méthode .map
 // async function getWorks() {
 //     try {
 //         const response = await fetch("http://localhost:5678/api/works");
 //         const works = await response.json();
-        
+
 //         const gallery = document.getElementById("gallery");
 
 //         const html = works.map((work) =>
@@ -48,7 +48,7 @@ getWorks();
 //         gallery.innerHTML = html;
 //     } catch (error) {
 //         console.error("Erreur lors du chargement des works :", error);
-//     }	
+//     }
 // }
 // getWorks();
 
@@ -62,52 +62,76 @@ getWorks();
 </figure>
 */
 
-
 // Toutes les catégories depuis les works
 async function getWorksByCategory(categoryId) {
-    try {
-        const response = await fetch("http://localhost:5678/api/works");
-        const works = await response.json();
+	try {
+		const response = await fetch('http://localhost:5678/api/works');
+		const works = await response.json();
 
-        const filteredWorks = works.filter(
-            function (work) {
-                return work.category.id === categoryId
-            } 
-        );
+		const filteredWorks = works.filter(function (work) {
+			return work.category.id === categoryId;
+		});
 
-        const gallery = document.getElementById("gallery");
+		const gallery = document.getElementById('gallery');
 
-        const html = filteredWorks.map(work =>
-            `<figure>
+		const html = filteredWorks
+			.map(
+				(work) =>
+					`<figure>
                 <img src="${work.imageUrl}" alt="${work.title}">
                 <figcaption>${work.title}</figcaption>
             </figure>`
-        ).join("");
+			)
+			.join('');
 
-        gallery.innerHTML = html;
-
-    } catch (error) {
-        console.error("Erreur lors du filtrage :", error);
-    }
+		gallery.innerHTML = html;
+	} catch (error) {
+		console.error('Erreur lors du filtrage :', error);
+	}
 }
 
-
-
 async function loginUser(email, password) {
-	const response = await fetch("http://localhost:5678/api/users/login", {
-		method: "POST",
+	const response = await fetch('http://localhost:5678/api/users/login', {
+		method: 'POST',
 		headers: {
-			"Content-Type": "application/json"
+			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
 			email: email,
-			password: password
-		})
+			password: password,
+		}),
 	});
 
 	if (!response.ok) {
-		throw new Error("Identifiants incorrects");
+		throw new Error('Identifiants incorrects');
 	}
 
 	return await response.json(); // { token: "..." }
+}
+
+async function getWorksForModal() {
+	try {
+		const response = await fetch('http://localhost:5678/api/works');
+		const works = await response.json();
+
+		const modalGallery = document.getElementById('modal-gallery');
+		modalGallery.innerHTML = '';
+
+		works.forEach((work) => {
+			const figure = document.createElement('figure');
+
+			const img = document.createElement('img');
+			img.src = work.imageUrl;
+			img.alt = work.title;
+
+			const deleteIcon = document.createElement('i');
+			deleteIcon.classList.add('fa-solid', 'fa-trash-can', 'delete-icon');
+
+			figure.appendChild(img);
+			figure.appendChild(deleteIcon);
+			modalGallery.appendChild(figure);
+		});
+	} catch (error) {
+		console.error('Erreur chargement galerie modale :', error);
+	}
 }

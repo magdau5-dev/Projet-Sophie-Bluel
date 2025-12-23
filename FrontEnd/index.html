@@ -12,6 +12,35 @@
 		<meta name="description" content="" />
 		<link rel="stylesheet" href="./assets/style.css" />
 	</head>
+
+	<!-- Modal -->
+	<div id="modal-overlay" class="modal-overlay hidden">
+		<div class="modal">
+			<!-- Bouton fermer -->
+			<div class="modal-container-close">
+				<button
+					id="close-modal"
+					class="modal-close"
+					aria-label="Fermer la modale">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			</div>
+
+			<h3 class="modal-title">Galerie photo</h3>
+
+			<!-- Galerie -->
+			<div id="modal-gallery" class="modal-gallery">
+				<!-- images injectées en JS -->
+			</div>
+
+			<hr class="modal-separator" />
+
+			<button id="add-photo-btn" class="btn-add-photo">
+				Ajouter une photo
+			</button>
+		</div>
+	</div>
+
 	<body>
 		<aside id="edition-section">
 			<div id="edition-content">
@@ -58,7 +87,9 @@
 				<div class="flex-modify">
 					<h2>Mes Projets</h2>
 
-					<button  id="btn-modify" class="btn-style"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+					<button id="btn-modify" class="btn-style">
+						<i class="fa-regular fa-pen-to-square"></i>modifier
+					</button>
 				</div>
 				<div id="filters" class="container-btn">
 					<button class="filters-btn active" onclick="getWorks()">Tous</button>
@@ -101,6 +132,7 @@
 	</body>
 	<script src="./api/api.js"></script>
 	<script src="./auth/auth.js"></script>
+	<script src="./script/modal.js"></script>
 	<script
 		src="https://kit.fontawesome.com/7184ab7233.js"
 		crossorigin="anonymous"></script>
