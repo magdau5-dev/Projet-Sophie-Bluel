@@ -407,14 +407,35 @@ footer nav ul {
 
 /* Bouton fermer */
 .modal-container-close {
-	display: flex;
-	justify-content: flex-end;
+	position: relative;
+	width: 100%;
+	margin-bottom: 20px;
 }
+/* boutons flèche + croix */
+/* BOUTONS */
+.modal-back,
 .modal-close {
+	position: absolute;
+	top: 50%;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background: none;
 	border: none;
-	font-size: 20px;
+	font-size: 18px;
 	cursor: pointer;
+}
+
+/* FLÈCHE À GAUCHE */
+.modal-back {
+	left: 0;
+}
+
+/* CROIX À DROITE */
+.modal-close {
+	right: 0;
 }
 
 /* Titre */
@@ -430,6 +451,10 @@ footer nav ul {
 	grid-template-columns: repeat(5, 1fr);
 	gap: 15px;
 	margin-bottom: 70px;
+}
+
+#modal-gallery-photo {
+	padding: 0px 60px;
 }
 
 /* Image miniature */
@@ -471,4 +496,81 @@ footer nav ul {
 	border-radius: 60px;
 	cursor: pointer;
 	font-size: 14px;
+}
+
+/* modal inputs*/
+.form-img {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+/* FORM EN COLONNE */
+#form-validation {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 0px 60px;
+}
+
+.form-label {
+	display: flex;
+	justify-content: start;
+}
+
+/* UPLOAD IMAGE */
+.upload-box {
+	background-color: #e8f1f6;
+	border-radius: 3px;
+	height: 170px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.upload-label {
+	cursor: pointer;
+	color: #306685;
+	font-size: 14px;
+}
+
+.upload-label i {
+	font-size: 50px;
+	margin-bottom: 10px;
+}
+
+.upload-label p {
+	background-color: #cbd6dc;
+	padding: 8px 16px;
+	border-radius: 50px;
+	margin: 0 0 5px;
+}
+
+.upload-label span {
+	font-size: 10px;
+	color: #444;
+}
+
+/* PREVIEW IMAGE */
+#preview {
+	position: absolute;
+	max-height: 100%;
+	max-width: 100%;
+	display: none;
+	object-fit: cover;
+}
+
+.btn-validation-photo {
+	font-family: 'Syne';
+	background-color: #a7a7a7;
+	color: white;
+	border: none;
+	padding: 10px 50px;
+	border-radius: 60px;
+	cursor: pointer;
+	font-size: 14px;
+	width: 237px;
+	margin: auto;
 }

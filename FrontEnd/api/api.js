@@ -127,6 +127,45 @@ async function getWorksForModal() {
 			const deleteIcon = document.createElement('i');
 			deleteIcon.classList.add('fa-solid', 'fa-trash-can', 'delete-icon');
 
+			// on stocke l'id du work
+			deleteIcon.dataset.id = work.id;
+
+			// clic sur la poubelle 
+			deleteIcon.addEventListener('click', async () => {
+				const token = localStorage.getItem('token');
+
+				// A DEMANDER
+				const confirmDelete = confirm(
+					'Voulez-vous vraiment supprimer ce projet ?'
+				);
+				if (!confirmDelete) return; // si l'alert est non ou fermée, return rien = fait aucune action 
+
+				try {
+					const deleteResponse = await fetch(
+						`http://localhost:5678/api/works/${work.id}`,
+						{
+							method: 'DELETE',
+							headers: {
+								Authorization: `Bearer ${token}`, // important d'envoyer la requete avec le token, si pas de token, pas de suppression
+							},
+						}
+					);
+
+					if (!deleteResponse.ok) {
+						throw new Error('Erreur suppression');
+					}
+
+					// suppression du DOM
+					figure.remove();
+
+					// mise à jour galerie principale
+					document.getElementById('gallery').innerHTML = '';
+					getWorks();// rappel de l'api pour visualiser les works
+				} catch (error) {
+					console.error('Erreur lors de la suppression :', error);
+				}
+			});
+
 			figure.appendChild(img);
 			figure.appendChild(deleteIcon);
 			modalGallery.appendChild(figure);
@@ -135,3 +174,4 @@ async function getWorksForModal() {
 		console.error('Erreur chargement galerie modale :', error);
 	}
 }
+

@@ -16,28 +16,88 @@
 	<!-- Modal -->
 	<div id="modal-overlay" class="modal-overlay hidden">
 		<div class="modal">
-			<!-- Bouton fermer -->
+			<!-- Bouton fermer + retour galerie -->
 			<div class="modal-container-close">
 				<button
-					id="close-modal"
-					class="modal-close"
-					aria-label="Fermer la modale">
+					id="back-to-gallery"
+					class="modal-back hidden"
+					aria-label="Retour à la galerie">
+					<i class="fa-solid fa-arrow-left"></i>
+				</button>
+
+				<button id="close-modal" class="modal-close" aria-label="Fermer">
 					<i class="fa-solid fa-xmark"></i>
 				</button>
 			</div>
+			<div id="modal-gallery-photo">
+				<h3 class="modal-title">Galerie photo</h3>
 
-			<h3 class="modal-title">Galerie photo</h3>
+				<!-- Galerie -->
+				<div id="modal-gallery" class="modal-gallery">
+					<!-- images injectées en JS -->
+				</div>
 
-			<!-- Galerie -->
-			<div id="modal-gallery" class="modal-gallery">
-				<!-- images injectées en JS -->
+				<hr class="modal-separator" />
+
+				<button id="add-photo-btn" class="btn-add-photo">
+					Ajouter une photo
+				</button>
 			</div>
+			<div id="modal-add-photo">
+				<form action="#" method="post" id="form-validation">
+					<h3 class="modal-title">Ajout photo</h3>
 
-			<hr class="modal-separator" />
+					<div class="upload-box">
+						<label for="image-upload" class="upload-label">
+							<i class="fa-regular fa-image"></i>
+							<p>+ Ajouter une photo</p>
+							<span>jpg, png : 4mo max</span>
+						</label>
 
-			<button id="add-photo-btn" class="btn-add-photo">
-				Ajouter une photo
-			</button>
+						<input
+							type="file"
+							id="image-upload"
+							accept="image/*"
+							onchange="previewImage(event)"
+							hidden />
+
+						<img id="preview" />
+					</div>
+
+					<script>
+						function previewImage(event) {
+							const img = document.getElementById('preview');
+							img.src = URL.createObjectURL(event.target.files[0]);
+							img.style.display = 'block';
+							document.querySelector('.upload-label').style.display = 'none';
+						}
+
+						// retour à la galerie
+						document
+							.getElementById('back-to-gallery')
+							.addEventListener('click', () => {
+								document.getElementById('modal-add-photo').style.display =
+									'none';
+								document.getElementById('modal-gallery-photo').style.display =
+									'block';
+							});
+					</script>
+
+					<label for="title" class="form-label">Titre</label>
+					<input type="text" name="title" id="title" class="form-img" />
+					<label for="category" class="form-label">Categorie</label>
+					<select name="category" id="category" class="form-img">
+						<option value=""></option>
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Hôtels & restaurants</option>
+					</select>
+
+					<hr class="modal-separator" />
+
+					<button id="validation" class="btn-validation-photo">Valider</button>
+				</form>
+			</div>
 		</div>
 	</div>
 
