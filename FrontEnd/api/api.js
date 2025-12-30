@@ -7,6 +7,7 @@ async function getWorks() {
 		const works = await response.json();
 
 		const gallery = document.getElementById('gallery');
+		gallery.innerHTML = '';
 
 		works.forEach((work) => {
 			const figure = document.createElement('figure');
@@ -175,3 +176,24 @@ async function getWorksForModal() {
 	}
 }
 
+
+// CATEGORIES API
+
+async function getCategories() {
+	try {
+		const response = await fetch('http://localhost:5678/api/categories');
+		const categories = await response.json();
+
+		const select = document.getElementById('category');
+		select.innerHTML = '<option value=""></option>';
+
+		categories.forEach((cat) => {
+			const option = document.createElement('option');
+			option.value = cat.id;
+			option.textContent = cat.name;
+			select.appendChild(option);
+		});
+	} catch (error) {
+		console.error('Erreur chargement catégories', error);
+	}
+}

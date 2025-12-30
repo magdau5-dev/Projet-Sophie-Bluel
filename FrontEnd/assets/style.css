@@ -553,7 +553,7 @@ footer nav ul {
 	color: #444;
 }
 
-/* PREVIEW IMAGE */
+/* preview img */
 #preview {
 	position: absolute;
 	max-height: 100%;
@@ -573,4 +573,22 @@ footer nav ul {
 	font-size: 14px;
 	width: 237px;
 	margin: auto;
+}
+
+.btn-validation-photo.active {
+	background-color: #1d6154;
+	cursor: pointer;
+}
+
+/*  Message form error - valid */
+.form-error {
+	color: red;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.form-valid {
+	color: #1d6154;
+	font-size: 14px;
+	margin-top: 10px;
 }

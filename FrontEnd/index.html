@@ -54,17 +54,12 @@
 							<span>jpg, png : 4mo max</span>
 						</label>
 
-						<input
-							type="file"
-							id="image-upload"
-							accept="image/*"
-							onchange="previewImage(event)"
-							hidden />
+						<input type="file" id="image-upload" accept="image/*" hidden />
 
 						<img id="preview" />
 					</div>
 
-					<script>
+					<!-- <script>
 						function previewImage(event) {
 							const img = document.getElementById('preview');
 							img.src = URL.createObjectURL(event.target.files[0]);
@@ -81,7 +76,7 @@
 								document.getElementById('modal-gallery-photo').style.display =
 									'block';
 							});
-					</script>
+					</script> -->
 
 					<label for="title" class="form-label">Titre</label>
 					<input type="text" name="title" id="title" class="form-img" />
@@ -94,7 +89,8 @@
 					</select>
 
 					<hr class="modal-separator" />
-
+					<p id="form-error" class="form-error"></p>	
+					<p id="form-valid" class="form-valid"></p>
 					<button id="validation" class="btn-validation-photo">Valider</button>
 				</form>
 			</div>
