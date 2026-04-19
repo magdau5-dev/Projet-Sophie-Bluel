@@ -28,7 +28,7 @@ if (token) {
 } else {
 	// utilisateur non connecté
 
-	// n'affiche pas filtres etc...
+	// affiche filtres etc...
 	editionSection.style.display = 'none';
 	btnModify.style.display = 'none';
 	filters.style.display = 'flex';
